@@ -1,0 +1,14 @@
+<div>
+  <h1>Favourite subject:</h1>
+  <auto-complete-text-input [placeholder]="placeholder" [suggestions]="suggestions" (lostFocus)="handleLostFocus($event)" (chosenSubject)="handleSelection($event)">
+  </auto-complete-text-input>
+</div>
+<div *ngIf="lostFocusWithoutInput">You lost focus without providing any input.</div>
+<div *ngIf="!lostFocusWithoutInput && enteredValue && !selection">You lost focus and entered: {{enteredValue}}</div>
+<div *ngIf="selection !== 'Software Frameworks' && selection">
+  <div>You selected {{selection}}, but actually you wanted to select Software Frameworks</div>
+</div>
+<div *ngIf="selection === 'Software Frameworks' && selection">
+  You did the only right thing and selected {{selection}}
+</div>
+<router-outlet></router-outlet>
